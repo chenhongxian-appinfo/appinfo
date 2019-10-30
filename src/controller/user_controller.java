@@ -22,6 +22,7 @@ public class user_controller {
 	public String login(HttpSession session, @RequestParam(value = "devCode", required = true) String devCode,
 			@RequestParam(value = "devPassword", required = true) String devPassword, Model model) {
 
+		System.out.println("进入登录方法");
 		dev_user user = impl.userlogin(devCode, devPassword);
 		if (user == null) {
 			return "redirct:jsp/devlogin.jsp";
