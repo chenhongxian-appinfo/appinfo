@@ -1,5 +1,7 @@
 package service.user;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -24,6 +26,12 @@ public class dev_user_service_impl implements dev_user_service {
 			return user;
 		}
 		return null;
+	}
+
+	@Override
+	public List<dev_user> selectAll() {
+		List<dev_user> list = dao.selectAll();
+		return list;
 	}
 
 }

@@ -9,7 +9,8 @@ public class app_version {
 	private BigInteger appId; // 来源于：app_info表的主键id
 	private String versionNo; // '版本号',
 	private String versionInfo;// 版本介绍
-	private BigInteger publishStatus; // 发布状态（来源于：data_dictionary，1 不发布 2 已发布 3 预发布）
+	private BigInteger publishStatus; // 发布状态（来源于：data_dictionary，1 不发布 2 已发布 3
+										// 预发布）
 	private String downloadLink;// 下载链接
 	private BigDecimal versionSize; // '版本大小（单位：M）
 	private BigInteger createdBy; // 创建者（来源于dev_user开发者信息表的用户id）',
