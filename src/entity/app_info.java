@@ -14,7 +14,8 @@ public class app_info {
 	private Date updateDate;// 更新日期
 	private BigInteger devId;// 开发者id（来源于：dev_user表的开发者id）
 	private String appInfo;// 应用简介
-	private BigInteger status;// 状态（来源于：data_dictionary，1 待审核 2 审核通过 3 审核不通过 4 已上架 5 已下架）',
+	private BigInteger status;// 状态（来源于：data_dictionary，1 待审核 2 审核通过 3 审核不通过 4
+								// 已上架 5 已下架）',
 	private Date onSaleDate;// '上架时间'
 	private Date offSaleDate;// '下架时间',
 	private BigInteger flatformId;// 所属平台（来源于：data_dictionary，1 手机 2 平板 3 通用）',
@@ -29,6 +30,61 @@ public class app_info {
 	private String logoPicPath;// LOGO图片url路径
 	private String logoLocPath;// 'LOGO图片的服务器存储路径
 	private BigInteger versionId;// 最新的版本id
+
+	private String flatformName;// 平台类型
+	public String getFlatformName() {
+		return flatformName;
+	}
+
+	public void setFlatformName(String flatformName) {
+		this.flatformName = flatformName;
+	}
+
+	public String getCategoryLevel1Name() {
+		return categoryLevel1Name;
+	}
+
+	public void setCategoryLevel1Name(String categoryLevel1Name) {
+		this.categoryLevel1Name = categoryLevel1Name;
+	}
+
+	public String getCategoryLevel2Name() {
+		return categoryLevel2Name;
+	}
+
+	public void setCategoryLevel2Name(String categoryLevel2Name) {
+		this.categoryLevel2Name = categoryLevel2Name;
+	}
+
+	public String getCategoryLevel3Name() {
+		return categoryLevel3Name;
+	}
+
+	public void setCategoryLevel3Name(String categoryLevel3Name) {
+		this.categoryLevel3Name = categoryLevel3Name;
+	}
+
+	public String getStatusName() {
+		return statusName;
+	}
+
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
+
+	public String getVersionNo() {
+		return versionNo;
+	}
+
+	public void setVersionNo(String versionNo) {
+		this.versionNo = versionNo;
+	}
+
+	private String categoryLevel1Name;// 一级分类名称
+	private String categoryLevel2Name;// 二级分类名称
+	private String categoryLevel3Name;// 三级分类名称
+	private String statusName;// 状态名称
+	public String versionNo;// 最新版本号
 
 	public int getId() {
 		return id;

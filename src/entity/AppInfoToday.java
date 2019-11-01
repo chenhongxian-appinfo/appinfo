@@ -4,35 +4,34 @@ import java.util.List;
 
 public class AppInfoToday {
 
-	private int pageindex = 1;
+	private int currentPageNo = 1;
 
-	public int getPageindex() {
-		return pageindex;
+	public int getCurrentPageNo() {
+		return currentPageNo;
 	}
 
-	public void setPageindex(int pageindex) {
-		this.pageindex = pageindex;
+	public void setCurrentPageNo(int currentPageNo) {
+		this.currentPageNo = currentPageNo;
 	}
 
-	public int getPageCountSum() {
-		return pageCountSum;
+	public int getTotalCount() {
+		return totalCount;
 	}
 
-	public void setPageCountSum(int pageCountSum) {
-		this.pageCountSum = pageCountSum;
-	}
-
-	public int getTodayPageCountSum() {
-		return todayPageCountSum;
-	}
-
-	public void setTodayPageCountSum(int todayPageCountSum) {
-		if (todayPageCountSum != 0) {
-			this.todayPageCountSum = todayPageCountSum;
-			this.pageCountSum = (todayPageCountSum % this.pageSize == 0) ? (todayPageCountSum / this.pageSize)
-					: (todayPageCountSum / this.pageSize) + 1;
+	public void setTotalCount(int totalCount) {
+		if (totalCount != 0) {
+			this.totalCount = totalCount;
+			this.totalPageCount = (totalCount % pageSize == 0) ? (totalCount / pageSize) : (totalCount / pageSize) + 1;
 		}
 
+	}
+
+	public int getTotalPageCount() {
+		return totalPageCount;
+	}
+
+	public void setTotalPageCount(int totalPageCount) {
+		this.totalPageCount = totalPageCount;
 	}
 
 	public int getPageSize() {
@@ -51,23 +50,23 @@ public class AppInfoToday {
 		this.list = list;
 	}
 
-	private int pageCountSum;
+	private int totalCount;
 
-	private int todayPageCountSum;
+	private int totalPageCount;
 
 	private int pageSize = 5;
 
 	private List<app_info> list;
-	
+
 	private int word;
 
 	public int getWord() {
-		this.word = (this.pageindex-1)*this.pageSize;
+		this.word = (this.currentPageNo - 1) * this.pageSize;
 		return word;
 	}
 
 	public void setWord(int word) {
-		
+
 		this.word = word;
 	}
 }

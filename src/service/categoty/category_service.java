@@ -8,7 +8,6 @@ public interface category_service {
 
 	public List<app_category> selectType1();
 
-	public List<app_category> selectType2();
+	public List<app_category> selectTypebyId(String id);
 
-	public List<app_category> selectType3();
 }

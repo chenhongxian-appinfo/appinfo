@@ -21,14 +21,8 @@ public class categoty_service_impl implements category_service {
 	}
 
 	@Override
-	public List<app_category> selectType2() {
-		List<app_category> list = dao.selectType2();
-		return list;
-	}
-
-	@Override
-	public List<app_category> selectType3() {
-		List<app_category> list = dao.selectType3();
+	public List<app_category> selectTypebyId(String id) {
+		List<app_category> list = dao.selectTypebyid(id);
 		return list;
 	}
 

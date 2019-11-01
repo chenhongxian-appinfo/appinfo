@@ -8,30 +8,69 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select COUNT(*) from
 		app_info
 	</select>
+	<resultMap type="app_info" id="app_info_map">
+		<id property="id" column="id" />
+		<result property="flatformName" column="pctyp1" />
+		<result property="categoryLevel1Name" column="type1" />
+		<result property="categoryLevel2Name" column="type2" />
+		<result property="categoryLevel3Name" column="type3" />
+		<result property="statusName" column="apptype" />
+		<result property="versionNo" column="vtype" />
+	</resultMap>
 
 
-	<select id="selectToday" resultType="app_info">
-		select * from app_info
-		<trim prefix="where 1=1 " suffix="limit  #{word},#{pageSize} ">
+	<select id="selectToday" resultMap="app_info_map">
+		select app.*,d.valueName as pctyp1 ,c1.categoryName as
+		type1,c2.categoryName
+		as type2 ,c3.categoryName as type3,d1.valueName
+		as
+		apptype,v.versionNo
+		as vtype
+		from app_info as app ,data_dictionary as
+		d
+		,app_category as c1
+		,app_category as c2 ,app_category as c3 ,
+		data_dictionary d1 ,
+		app_version as v
+		where d.valueId = app.flatformId
+		and d.typeCode =
+		'APP_FLATFORM' and c1.id
+		= app.categoryLevel1 and c2.id
+		=
+		app.categoryLevel2 and c3.id =
+		app.categoryLevel3
+		and d1.typeCode =
+		'APP_STATUS' and d1.valueId = app.`status` and
+		app.versionId= v.id
 
-			<if test="AppName!=null and AppName!=''">
+		<trim suffix="limit  #{page.word},#{page.pageSize} ">
 
-				and softwareName like CONCAT("%",#{AppName},"%")
+			<if test="appinfoselect!=null">
+				<if test="appinfoselect.AppName!=null and appinfoselect.AppName!=''">
+
+					and softwareName like
+					CONCAT("%",#{appinfoselect.AppName},"%")
+				</if>
+				<if
+					test="appinfoselect.flatformId!=null and appinfoselect.flatformId!=''">
+					and flatformId = #{appinfoselect.Type}
+				</if>
+				<if test="appinfoselect.PcNameID!=null and appinfoselect.PcNameID!=''">
+					and devId = #{appinfoselect.PcNameID}
+				</if>
+
+				<if test="appinfoselect.classify1!=null and appinfoselect.classify1!=''">
+					and categoryLevel1 = #{appinfoselect.classify1}
+				</if>
+
+				<if test="appinfoselect.classify2!=null and appinfoselect.classify2!=''">
+					and categoryLevel2 = #{appinfoselect.classify2}
+				</if>
+
+				<if test="appinfoselect.classify3!=null and appinfoselect.classify3!=''">
+					and categoryLevel3 = #{appinfoselect.classify3}
+				</if>
 			</if>
-			<if test="flatformId!=null and flatformId!=''">
-				and flatformId = #{Type}
-			</if>
-			<if test="PcNameID!=null and PcNameID!=''">
-				and devId = #{PcNameID}
-			</if>
-
-			<if test="classify1!=null and classify1!=''">
-				and categoryLevel1 = #{classify1}
-			</if>
-
-			<if test="classify2!=null and classify2!=''">and categoryLevel2 = #{classify2}</if>
-
-			<if test="classify3!=null and classify3!=''">and categoryLevel3 = #{classify3}</if>
 		</trim>
 
 

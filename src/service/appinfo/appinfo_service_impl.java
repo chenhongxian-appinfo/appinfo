@@ -25,6 +25,8 @@ public class appinfo_service_impl implements appinfo_service {
 
 	@Override
 	public List<app_info> AppinfoTodayPage(AppInfoSelect appinfoselect, AppInfoToday page) {
+		
+		
 		List<app_info> list = dao.selectToday(appinfoselect, page);
 		return list;
 	}

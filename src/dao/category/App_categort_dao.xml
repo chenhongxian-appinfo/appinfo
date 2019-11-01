@@ -6,21 +6,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectType1" resultType="app_category">
 
 		select * from app_category
-		where parentId = 1
+		where parentId is null
 	</select>
 
 
-	<select id="selectType2" resultType="app_category">
+	<select id="selectTypebyid" resultType="app_category">
 
-		select * from app_category
-		where parentId = 2
+		select * from
+		app_category
+		where parentId = #{id}
 	</select>
 
-	<select id="selectType3" resultType="app_category">
 
-		select * from app_category
-		where parentId = 3
-	</select>
 
 
 </mapper>
