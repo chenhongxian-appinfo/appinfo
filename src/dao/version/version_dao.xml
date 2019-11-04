@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.version.version_dao">
+
+	<resultMap type="app_version" id="versionmap">
+		<id property="id" column="id" />
+		<result property="appName" column="appname" />
+		<result property="publishStatusName" column="typeName" />
+	</resultMap>
+
+
+	<select id="selectById" resultMap="versionmap">
+
+		select appv.*,app.softwareName as appname ,d.valueName as typeName
+		from
+		app_version as appv,
+		app_info as app , data_dictionary as d
+
+		where
+		app.id
+		= appv.appId and d.typeCode = 'PUBLISH_STATUS' and
+		appv.publishStatus =
+		d.valueId
+
+
+		<if test="appId!='' and appId!=null">
+
+			and app.id = #{appId}
+		</if>
+
+	</select>
+
+</mapper>
