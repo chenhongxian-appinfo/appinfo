@@ -11,4 +11,6 @@ public interface appinfo_service {
 	public int selectInfoCountAll();
 
 	public List<app_info> AppinfoTodayPage(AppInfoSelect appinfoselect, AppInfoToday page);
+
+	public app_info selectById(String id);
 }

@@ -66,9 +66,11 @@ $("#queryCategoryLevel2").change(
 		});
 
 $(".addVersion").on("click", function() {
+	alert("asdf");
 	var obj = $(this);
-	window.location.href = "appversionadd?id=" + obj.attr("appinfoid");
+	window.location.href = "selectByid.html?id=" + obj.attr("appinfoid");
 });
+
 $(".modifyVersion").on(
 		"click",
 		function() {

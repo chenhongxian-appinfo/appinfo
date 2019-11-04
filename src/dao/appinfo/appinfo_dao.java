@@ -14,4 +14,9 @@ public interface appinfo_dao {
 
 	public List<app_info> selectToday(@Param("appinfoselect") AppInfoSelect appinfoselect,
 			@Param("page") AppInfoToday page);
+
+	public int AppinfoByselect(@Param("appinfoselect") AppInfoSelect appinfoselect);
+
+	public app_info selectByid(@Param("id") String id);
+
 }

@@ -31,4 +31,10 @@ public class appinfo_service_impl implements appinfo_service {
 		return list;
 	}
 
+	@Override
+	public app_info selectById(String id) {
+		app_info app = dao.selectByid(id);
+		return app;
+	}
+
 }

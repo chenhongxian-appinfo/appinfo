@@ -48,32 +48,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="appinfoselect!=null">
 				<if test="appinfoselect.AppName!=null and appinfoselect.AppName!=''">
 
-					and softwareName like
+					and app.softwareName like
 					CONCAT("%",#{appinfoselect.AppName},"%")
 				</if>
-				<if
-					test="appinfoselect.flatformId!=null and appinfoselect.flatformId!=''">
-					and flatformId = #{appinfoselect.Type}
-				</if>
 				<if test="appinfoselect.PcNameID!=null and appinfoselect.PcNameID!=''">
-					and devId = #{appinfoselect.PcNameID}
+					and app.flatformId = #{appinfoselect.PcNameID}
 				</if>
 
 				<if test="appinfoselect.classify1!=null and appinfoselect.classify1!=''">
-					and categoryLevel1 = #{appinfoselect.classify1}
+					and app.categoryLevel1 = #{appinfoselect.classify1}
 				</if>
 
 				<if test="appinfoselect.classify2!=null and appinfoselect.classify2!=''">
-					and categoryLevel2 = #{appinfoselect.classify2}
+					and app.categoryLevel2 = #{appinfoselect.classify2}
 				</if>
 
 				<if test="appinfoselect.classify3!=null and appinfoselect.classify3!=''">
-					and categoryLevel3 = #{appinfoselect.classify3}
+					and app.categoryLevel3 = #{appinfoselect.classify3}
+				</if>
+
+				<if test="appinfoselect.type !=null and appinfoselect.type!='' ">
+					and app.versionId = #{Type}
 				</if>
 			</if>
 		</trim>
+	</select>
 
+	<select id="selectByid" resultType="app_info">
 
+		select * from app_info where
+		id = #{id}
 
 	</select>
+
+
 </mapper>
