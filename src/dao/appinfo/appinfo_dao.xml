@@ -81,5 +81,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 
+	<select id="selectByName" resultType="app_info">
 
+		select * from app_info
+		where APKName =#{Name}
+	</select>
+
+	<insert id="addAppinfo" parameterType="app_info">
+
+		INSERT
+		app_info(`id`,`softwareName`,APKName,supportROM,interfaceLanguage,softwareSize,updateDate,devId,appInfo,`status`,onSaleDate,offSaleDate,flatformId,categoryLevel3,downloads,createdBy,creationDate,modifyBy,modifyDate,categoryLevel1,categoryLevel2,logoPicPath,logoLocPath,versionId)
+		VALUE(#{id},#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},#{softwareSize},#{updateDate},#{devId},#{appInfo},#{status},#{onSaleDate},#{offSaleDate},#{flatformId},#{categoryLevel3},#{downloads},#{createdBy},#{creationDate},#{modifyBy},#{modifyDate},#{categoryLevel1},#{categoryLevel2},#{logoPicPath},#{logoLocPath},#{versionId})
+	</insert>
 </mapper>

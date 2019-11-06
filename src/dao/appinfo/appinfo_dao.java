@@ -19,4 +19,7 @@ public interface appinfo_dao {
 
 	public app_info selectByid(@Param("id") String id);
 
+	public app_info selectByName(@Param("Name") String Name);
+
+	public int addAppinfo(app_info app);
 }

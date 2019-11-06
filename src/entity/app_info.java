@@ -32,6 +32,7 @@ public class app_info {
 	private BigInteger versionId;// 最新的版本id
 
 	private String flatformName;// 平台类型
+
 	public String getFlatformName() {
 		return flatformName;
 	}

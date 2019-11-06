@@ -20,14 +20,14 @@ public class user_controller {
 
 	@RequestMapping("/login.html")
 	public String login(HttpSession session, @RequestParam(value = "devCode", required = true) String devCode,
-			@RequestParam(value = "devPassword", required = true) String devPassword, Model model) {
+			@RequestParam(value = "devPassword", required = true) String devPassword, HttpSession sessioin) {
 
 		System.out.println("进入登录方法");
 		dev_user user = userimpl.userlogin(devCode, devPassword);
 		if (user == null) {
 			return "redirect:jsp/devlogin.jsp";
 		}
-		model.addAttribute("devUserSession", user);
+		session.setAttribute("devUserSession", user);
 		return "developer/main";
 	}
 }

@@ -25,8 +25,7 @@ public class appinfo_service_impl implements appinfo_service {
 
 	@Override
 	public List<app_info> AppinfoTodayPage(AppInfoSelect appinfoselect, AppInfoToday page) {
-		
-		
+
 		List<app_info> list = dao.selectToday(appinfoselect, page);
 		return list;
 	}
@@ -35,6 +34,25 @@ public class appinfo_service_impl implements appinfo_service {
 	public app_info selectById(String id) {
 		app_info app = dao.selectByid(id);
 		return app;
+	}
+
+	@Override
+	public String selectByName(String name) {
+		if (name == "" || name == null) {
+			return "empty";
+		}
+
+		app_info app = dao.selectByName(name);
+		if (app != null) {
+			return "exist";
+		}
+		return "noexist";
+	}
+
+	@Override
+	public int addinfo(app_info app) {
+		int num = dao.addAppinfo(app);
+		return num;
 	}
 
 }
