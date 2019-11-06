@@ -66,6 +66,7 @@ public class appinfo_controller {
 		List<data_dictionary> listApptype = dataimpl.selectApptype();
 		AppInfoToday page = new AppInfoToday();
 		page.setTotalCount(appinfoimpl.selectInfoCountAll());
+		System.out.println(page.getPageSize());
 		List<app_info> applist = appinfoimpl.AppinfoTodayPage(null, page);
 		session.setAttribute("categoryLevel1List", listtypr1);
 		session.setAttribute("flatFormList", listcpType);
@@ -94,7 +95,6 @@ public class appinfo_controller {
 	public String selectByid(String id, Model model) {
 		System.out.println("Ω¯»Îid≤È—Ø=======================================");
 		List<app_version> list = versionimpl.selectById(id);
-		System.out.println(list.get(0).getPublishStatusName());
 		model.addAttribute("appVersionList", list);
 		return "developer/appversionadd";
 

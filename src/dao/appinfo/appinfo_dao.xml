@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select COUNT(*) from
 		app_info
 	</select>
+
 	<resultMap type="app_info" id="app_info_map">
 		<id property="id" column="id" />
 		<result property="flatformName" column="pctyp1" />
@@ -20,58 +21,53 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="selectToday" resultMap="app_info_map">
-		select app.*,d.valueName as pctyp1 ,c1.categoryName as
-		type1,c2.categoryName
-		as type2 ,c3.categoryName as type3,d1.valueName
-		as
-		apptype,v.versionNo
-		as vtype
-		from app_info as app ,data_dictionary as
-		d
-		,app_category as c1
-		,app_category as c2 ,app_category as c3 ,
-		data_dictionary d1 ,
-		app_version as v
-		where d.valueId = app.flatformId
-		and d.typeCode =
-		'APP_FLATFORM' and c1.id
-		= app.categoryLevel1 and c2.id
+
+		select app.*, d.valueName as pctyp1 ,c1.categoryName as
+		type1,c2.categoryName as type2 ,c3.categoryName as type3,d1.valueName
+		as apptype,
+		(select v.versionNo from app_version as v where app.id =
+		v.appId ORDER BY
+		v.creationDate DESC LIMIT 1 ) as vtype
+		from app_info as
+		app ,data_dictionary as d ,app_category as c1
+		,app_category as c2
+		,app_category as c3 , data_dictionary d1
+		where d.valueId =
+		app.flatformId and d.typeCode = 'APP_FLATFORM' and c1.id
 		=
-		app.categoryLevel2 and c3.id =
+		app.categoryLevel1 and c2.id = app.categoryLevel2 and c3.id =
 		app.categoryLevel3
-		and d1.typeCode =
-		'APP_STATUS' and d1.valueId = app.`status` and
-		app.versionId= v.id
+		and d1.typeCode = 'APP_STATUS' and d1.valueId =
+		app.`status`
 
-		<trim suffix="limit  #{page.word},#{page.pageSize} ">
 
-			<if test="appinfoselect!=null">
-				<if test="appinfoselect.AppName!=null and appinfoselect.AppName!=''">
+		<if test="appinfoselect!=null">
 
-					and app.softwareName like
-					CONCAT("%",#{appinfoselect.AppName},"%")
-				</if>
-				<if test="appinfoselect.PcNameID!=null and appinfoselect.PcNameID!=''">
-					and app.flatformId = #{appinfoselect.PcNameID}
-				</if>
-
-				<if test="appinfoselect.classify1!=null and appinfoselect.classify1!=''">
-					and app.categoryLevel1 = #{appinfoselect.classify1}
-				</if>
-
-				<if test="appinfoselect.classify2!=null and appinfoselect.classify2!=''">
-					and app.categoryLevel2 = #{appinfoselect.classify2}
-				</if>
-
-				<if test="appinfoselect.classify3!=null and appinfoselect.classify3!=''">
-					and app.categoryLevel3 = #{appinfoselect.classify3}
-				</if>
-
-				<if test="appinfoselect.type !=null and appinfoselect.type!='' ">
-					and app.versionId = #{Type}
-				</if>
+			<if test="appinfoselect.AppName!=null and appinfoselect.AppName!=''">
+				and app.softwareName like
+				CONCAT("%",#{appinfoselect.AppName},"%")
 			</if>
-		</trim>
+			<if test="appinfoselect.PcNameID!=null and appinfoselect.PcNameID!=''">
+				and app.flatformId = #{appinfoselect.PcNameID}
+			</if>
+
+			<if test="appinfoselect.classify1!=null and appinfoselect.classify1!=''">
+				and app.categoryLevel1 = #{appinfoselect.classify1}
+			</if>
+
+			<if test="appinfoselect.classify2!=null and appinfoselect.classify2!=''">
+				and app.categoryLevel2 = #{appinfoselect.classify2}
+			</if>
+
+			<if test="appinfoselect.classify3!=null and appinfoselect.classify3!=''">
+				and app.categoryLevel3 = #{appinfoselect.classify3}
+			</if>
+
+			<if test="appinfoselect.type !=null and appinfoselect.type!='' ">
+				and app.`status` = #{appinfoselect.Type}
+			</if>
+		</if>
+		limit #{page.word},#{page.pageSize}
 	</select>
 
 	<select id="selectByid" resultType="app_info">
