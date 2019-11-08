@@ -89,4 +89,99 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		app_info(`id`,`softwareName`,APKName,supportROM,interfaceLanguage,softwareSize,updateDate,devId,appInfo,`status`,onSaleDate,offSaleDate,flatformId,categoryLevel3,downloads,createdBy,creationDate,modifyBy,modifyDate,categoryLevel1,categoryLevel2,logoPicPath,logoLocPath,versionId)
 		VALUE(#{id},#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},#{softwareSize},#{updateDate},#{devId},#{appInfo},#{status},#{onSaleDate},#{offSaleDate},#{flatformId},#{categoryLevel3},#{downloads},#{createdBy},#{creationDate},#{modifyBy},#{modifyDate},#{categoryLevel1},#{categoryLevel2},#{logoPicPath},#{logoLocPath},#{versionId})
 	</insert>
+
+	<update id="updateVersionByid">
+		update app_info
+		<trim prefix="set" suffix="WHERE id  =#{id}" suffixOverrides=",">
+			<if test="softwareName!=null and softwareName!=''">
+				`softwareName`=#{softwareName},
+			</if>
+			<if test="APKName!=null and APKName!=''">
+				`APKName`=#{APKName},
+			</if>
+
+			<if test="supportROM!=null and supportROM!=''">
+				`supportROM`=#{supportROM},
+			</if>
+
+
+			<if test="interfaceLanguage!=null and interfaceLanguage!=''">
+				`interfaceLanguage`=#{interfaceLanguage},
+			</if>
+
+
+			<if test="softwareSize!=null and softwareSize!=''">
+				`softwareSize`=#{softwareSize},
+			</if>
+
+
+			<if test="updateDate!=null and updateDate!=''">
+				`updateDate`=#{updateDate},
+			</if>
+
+			<if test="devId!=null and devId!=''">
+				`devId`=#{devId},
+			</if>
+
+			<if test="appInfo!=null and appInfo!=''">
+				`appInfo`=#{appInfo},
+			</if>
+
+			<if test="status!=null and status!=''">
+				`status`=#{status},
+			</if>
+
+			<if test="onSaleDate!=null and onSaleDate!=''">
+				`onSaleDate`=#{onSaleDate},
+			</if>
+
+			<if test="flatformId!=null and flatformId!=''">
+				`flatformId`=#{flatformId},
+			</if>
+			<if test="categoryLevel3!=null and categoryLevel3!=''">
+				`categoryLevel3`=#{categoryLevel3},
+			</if>
+
+			<if test="downloads!=null and downloads!=''">
+				`downloads`=#{downloads},
+			</if>
+
+			<if test="createdBy!=null and createdBy!=''">
+				`createdBy`=#{createdBy},
+			</if>
+
+			<if test="creationDate!=null and creationDate!=''">
+				`creationDate`=#{creationDate},
+			</if>
+
+			<if test="modifyBy!=null and modifyBy!=''">
+				`modifyBy`=#{modifyBy},
+			</if>
+
+			<if test="modifyDate!=null and modifyDate!=''">
+				`modifyDate`=#{modifyDate},
+			</if>
+
+			<if test="categoryLevel1!=null and categoryLevel1!=''">
+				`categoryLevel1`=#{categoryLevel1},
+			</if>
+
+			<if test="categoryLevel2!=null and categoryLevel2!=''">
+				`categoryLevel2`=#{categoryLevel2},
+			</if>
+
+			<if test="logoPicPath!=null and logoPicPath!=''">
+				`logoPicPath`=#{logoPicPath},
+			</if>
+
+			<if test="logoLocPath!=null and logoLocPath!=''">
+				`logoLocPath`=#{logoLocPath},
+			</if>
+			<if test="versionId!=null and versionId!=''">
+				`versionId`=#{versionId},
+			</if>
+		</trim>
+
+
+	</update>
 </mapper>

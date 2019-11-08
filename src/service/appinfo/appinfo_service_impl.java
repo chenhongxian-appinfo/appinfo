@@ -55,4 +55,13 @@ public class appinfo_service_impl implements appinfo_service {
 		return num;
 	}
 
+	@Override
+	public boolean updateByinfoapp(app_info app) {
+		boolean yes = false;
+		if (dao.updateVersionByid(app) >= 1) {
+			yes = true;
+		}
+		return yes;
+	}
+
 }

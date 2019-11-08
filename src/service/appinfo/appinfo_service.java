@@ -13,8 +13,11 @@ public interface appinfo_service {
 	public List<app_info> AppinfoTodayPage(AppInfoSelect appinfoselect, AppInfoToday page);
 
 	public app_info selectById(String id);
-	
+
 	public String selectByName(String name);
-	
+
 	public int addinfo(app_info app);
+
+	public boolean updateByinfoapp(app_info app);
+
 }

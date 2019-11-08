@@ -65,31 +65,34 @@ $("#queryCategoryLevel2").change(
 			}
 		});
 
-$(".addVersion").on("click", function() {
-	alert("asdf");
-	var obj = $(this);
-	window.location.href = "selectByid.html?id=" + obj.attr("appinfoid");
-});
-
-$(".modifyVersion").on(
+$(".addVersion").on(
 		"click",
 		function() {
 			var obj = $(this);
-			var status = obj.attr("status");
-			var versionid = obj.attr("versionid");
-			var appinfoid = obj.attr("appinfoid");
-			if (status == "1" || status == "3") {// 待审核、审核未通过状态下才可以进行修改操作
-				if (versionid == null || versionid == "") {
-					alert("该APP应用无版本信息，请先增加版本信息！");
-				} else {
-					window.location.href = "appversionmodify?vid=" + versionid
-							+ "&aid=" + appinfoid;
-				}
-			} else {
-				alert("该APP应用的状态为：【" + obj.attr("statusname")
-						+ "】,不能修改其版本信息，只可进行【新增版本】操作！");
-			}
+			window.location.href = "../version/verindex.html?id="
+					+ obj.attr("appinfoid");
 		});
+
+$(".modifyVersion")
+		.on(
+				"click",
+				function() {
+					var obj = $(this);
+					var status = obj.attr("status");
+					var versionid = obj.attr("versionid");
+					var appinfoid = obj.attr("appinfoid");
+					if (status == "1" || status == "3") {// 待审核、审核未通过状态下才可以进行修改操作
+						if (versionid == null || versionid == "") {
+							alert("该APP应用无版本信息，请先增加版本信息！");
+						} else {
+							window.location.href = "../version/updataVersionindex.html?vid="
+									+ versionid + "&aid=" + appinfoid;
+						}
+					} else {
+						alert("该APP应用的状态为：【" + obj.attr("statusname")
+								+ "】,不能修改其版本信息，只可进行【新增版本】操作！");
+					}
+				});
 $(".modifyAppInfo").on("click", function() {
 	var obj = $(this);
 	var status = obj.attr("status");

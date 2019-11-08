@@ -1,8 +1,5 @@
-$(function(){  
-	$("#back").on("click",function(){
-		window.location.href = "list";
+$(function() {
+	$("#back").on("click", function() {
+		window.location.href = "../appinfo/index.html";
 	});
 });
-      
-      
-      

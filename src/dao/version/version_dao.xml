@@ -33,4 +33,92 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 
+
+	<insert id="addversion" parameterType="app_version">
+		INSERT
+		app_version(`id`,`appId`,`versionNo`,`versionInfo`,publishStatus,`downloadLink`,`versionSize`,`createdBy`,`creationDate`,`modifyBy`,`modifyDate`,`apkLocPath`,`apkFileName`)
+		VALUE
+		(#{id},#{appId},#{versionNo},#{versionInfo},#{publishStatus},#{downloadLink},#{versionSize},#{createdBy},#{creationDate},#{modifyBy},#{modifyDate},#{apkLocPath},#{apkFileName})
+	</insert>
+
+
+	<select id="selectByDateMax" resultType="app_version">
+		select
+		appv.*,app.softwareName ,d.valueName from
+		app_version as appv, app_info
+		as app , data_dictionary as d
+
+		where
+		app.id = appv.appId and d.typeCode =
+		'PUBLISH_STATUS' and
+		appv.publishStatus = d.valueId and appId =
+		#{appId} ORDER BY
+		creationDate
+		DESC LIMIT 1 ;
+	</select>
+
+	<update id="updateversion" parameterType="app_version">
+		update app_version
+
+		<trim prefix="set" suffix="where id =#{id}" suffixOverrides=",">
+
+			<if test="appId!=null and appId!=''">
+				`appId`=#{appId},
+			</if>
+
+			<if test=" versionNo!=null and versionNo!=''">
+				`versionNo`=#{versionNo},
+			</if>
+
+			<if test=" versionInfo!=null and versionInfo!=''">
+				`versionInfo`=#{versionInfo},
+			</if>
+
+			<if test=" publishStatus!=null and publishStatus!=''">
+				publishStatus=#{publishStatus},
+			</if>
+
+			<if test=" downloadLink!=null and downloadLink!=''">
+				`downloadLink`=#{downloadLink},
+			</if>
+
+			<if test=" versionSize!=null and versionSize!=''">
+				`versionSize`=#{versionSize},
+			</if>
+
+			<if test=" createdBy!=null and createdBy!=''">
+				`createdBy`=#{createdBy},
+			</if>
+
+			<if test=" creationDate!=null and creationDate!=''">
+				`creationDate`=#{creationDate},
+			</if>
+
+			<if test=" modifyBy!=null and modifyBy!=''">
+				`modifyBy`=#{modifyBy},
+			</if>
+
+			<if test=" modifyDate!=null and modifyDate!=''">
+				`modifyDate`=#{modifyDate},
+			</if>
+
+			<if test=" apkLocPath!=null and apkLocPath!=''">
+				`apkLocPath`=#{apkLocPath},
+			</if>
+
+			<if test="apkFileName !=null and apkFileName !=''">
+				`apkFileName`=#{apkFileName}
+			</if>
+
+
+		</trim>
+
+
+
+	</update>
+
+	<select id="selecrById" resultType="app_version">
+		select * from app_version
+		where id=#{id}
+	</select>
 </mapper>

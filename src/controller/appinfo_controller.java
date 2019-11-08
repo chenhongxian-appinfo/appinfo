@@ -58,7 +58,6 @@ public class appinfo_controller {
 	version_service versionimpl;
 
 	@RequestMapping(value = "/index.html")
-
 	public String test(@ModelAttribute("appinfoselect") AppInfoSelect appinfoselect, HttpSession session) {
 		System.out.println("+++++++++++++++++++++++++++++++++++++把分页查询的信息类传入到页面中");
 		List<app_category> listtypr1 = categotyimpl.selectType1();
@@ -91,15 +90,6 @@ public class appinfo_controller {
 
 	}
 
-	@RequestMapping(value = "/selectByid.html")
-	public String selectByid(String id, Model model) {
-		System.out.println("进入id查询=======================================");
-		List<app_version> list = versionimpl.selectById(id);
-		model.addAttribute("appVersionList", list);
-		return "developer/appversionadd";
-
-	}
-
 	@RequestMapping(value = "/selectByname", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
 	public Object selectByName(String APKName) {
@@ -123,6 +113,7 @@ public class appinfo_controller {
 		session.removeAttribute("fileUploadError");
 		String idPacpath = null;
 		String wordpath = null;
+
 		if (!attach.isEmpty()) {
 			String path = request.getSession().getServletContext().getRealPath("statics" + File.separator + "images");
 			wordpath = session.getServletContext().getContextPath();
@@ -158,9 +149,7 @@ public class appinfo_controller {
 				idPacpath = path + File.separator + fileName;
 				wordpath = wordpath.substring(wordpath.lastIndexOf("\\") + 1);
 				wordpath = wordpath.substring(1);
-				System.out.println(wordpath);
-
-				wordpath = "\\" + wordpath + "\\statics" + File.separator + fileName;
+				wordpath = "/" + wordpath + "/statics" + File.separator + fileName;
 				System.out.println("绝对路径====================>" + idPacpath);
 			} else {
 				session.setAttribute("fileUploadError", "上传文件格式不正确");
@@ -176,4 +165,7 @@ public class appinfo_controller {
 		appinfoimpl.addinfo(appinfo);
 		return "redirect:appinfo/index.html";
 	}
+
+
+
 }
