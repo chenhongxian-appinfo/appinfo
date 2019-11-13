@@ -20,4 +20,7 @@ public interface appinfo_service {
 
 	public boolean updateByinfoapp(app_info app);
 
+	public app_info selectByIdContext(String id);
+
+	public boolean deleteById(String id);
 }

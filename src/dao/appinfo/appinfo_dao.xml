@@ -184,4 +184,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	</update>
+
+	<select id="selectByidContext" resultMap="app_info_map">
+		select app.*,
+		d.valueName as pctyp1 ,c1.categoryName as
+		type1,c2.categoryName as
+		type2 ,c3.categoryName as type3,d1.valueName
+		as apptype,
+		(select
+		v.versionNo from app_version as v where app.id = v.appId ORDER BY
+		v.creationDate DESC LIMIT 1 ) as vtype
+		from app_info as app
+		,data_dictionary as d ,app_category as c1
+		,app_category as c2
+		,app_category as c3 , data_dictionary d1
+		where d.valueId =
+		app.flatformId and d.typeCode = 'APP_FLATFORM' and c1.id
+		=
+		app.categoryLevel1 and c2.id = app.categoryLevel2 and c3.id =
+		app.categoryLevel3
+		and d1.typeCode = 'APP_STATUS' and d1.valueId =
+		app.`status` and app.id=#{id}
+	</select>
+	<delete id="deleteById">
+		delete from app_info where id = #{id}
+	</delete>
 </mapper>

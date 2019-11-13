@@ -96,7 +96,8 @@
 								<li><a><i class="fa fa-edit"></i> APP应用管理<span
 										class="fa fa-chevron-down"></span> </a>
 									<ul class="nav child_menu">
-										<li><a href="${pageContext.request.contextPath }/appinfo/index.html">APP维护</a>
+										<li><a
+											href="${pageContext.request.contextPath }/appinfo/index.html">APP维护</a>
 										</li>
 									</ul></li>
 							</ul>
@@ -115,7 +116,7 @@
 						</a> <a data-toggle="tooltip" data-placement="top" title="Lock"> <span
 							class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
 						</a> <a data-toggle="tooltip" data-placement="top" title="Logout"
-							href="${pageContext.request.contextPath }/dev/logout"> <span
+							href="${pageContext.request.contextPath }"> <span
 							class="glyphicon glyphicon-off" aria-hidden="true"></span>
 						</a>
 					</div>

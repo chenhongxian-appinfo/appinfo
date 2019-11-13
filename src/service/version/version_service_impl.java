@@ -48,4 +48,13 @@ public class version_service_impl implements version_service {
 		return version;
 	}
 
+	@Override
+	public boolean deleteById(String appId) {
+		boolean yes = false;
+		if (dao.deleteById(appId) >= 1) {
+			yes = true;
+		}
+		return yes;
+	}
+
 }

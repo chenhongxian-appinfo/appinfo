@@ -11,4 +11,6 @@ public interface user_dao {
 	public dev_user selectbyUsername(@Param("userinfo") String user);
 
 	public List<dev_user> selectAll();
+	
+	
 }

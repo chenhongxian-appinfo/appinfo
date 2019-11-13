@@ -121,4 +121,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from app_version
 		where id=#{id}
 	</select>
+
+	<delete id="deleteById">
+		delete from app_version where appId = #{appId}
+	</delete>
 </mapper>

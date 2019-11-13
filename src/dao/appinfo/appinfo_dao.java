@@ -24,4 +24,8 @@ public interface appinfo_dao {
 	public int addAppinfo(app_info app);
 
 	public int updateVersionByid(app_info app);
+
+	public app_info selectByidContext(@Param("id") String id);
+
+	public int deleteById(@Param("id") String id);
 }

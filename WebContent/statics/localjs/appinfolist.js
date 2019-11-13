@@ -93,15 +93,18 @@ $(".modifyVersion")
 								+ "】,不能修改其版本信息，只可进行【新增版本】操作！");
 					}
 				});
-$(".modifyAppInfo").on("click", function() {
-	var obj = $(this);
-	var status = obj.attr("status");
-	if (status == "1" || status == "3") {// 待审核、审核未通过状态下才可以进行修改操作
-		window.location.href = "appinfomodify?id=" + obj.attr("appinfoid");
-	} else {
-		alert("该APP应用的状态为：【" + obj.attr("statusname") + "】,不能修改！");
-	}
-});
+$(".modifyAppInfo").on(
+		"click",
+		function() {
+			var obj = $(this);
+			var status = obj.attr("status");
+			if (status == "1" || status == "3") {// 待审核、审核未通过状态下才可以进行修改操作
+				window.location.href = "../appinfo/updataAppinfpIndex.html?id="
+						+ obj.attr("appinfoid");
+			} else {
+				alert("该APP应用的状态为：【" + obj.attr("statusname") + "】,不能修改！");
+			}
+		});
 
 $(document).on("click", ".saleSwichOpen,.saleSwichClose", function() {
 	var obj = $(this);
@@ -120,7 +123,7 @@ var saleSwitchAjax = function(appId, obj) {
 	$
 			.ajax({
 				type : "PUT",
-				url : appId + "/sale.json",
+				url : "../appinfo/updateAppType?Appid=" + appId,
 				dataType : "json",
 				success : function(data) {
 					/*
@@ -195,10 +198,13 @@ var saleSwitchAjax = function(appId, obj) {
 			});
 };
 
-$(".viewApp").on("click", function() {
-	var obj = $(this);
-	window.location.href = "appview/" + obj.attr("appinfoid");
-});
+$(".viewApp").on(
+		"click",
+		function() {
+			var obj = $(this);
+			window.location.href = "../appinfo/selectAppinfoById.html?id="
+					+ obj.attr("appinfoid");
+		});
 
 $(".deleteApp").on(
 		"click",
@@ -208,7 +214,7 @@ $(".deleteApp").on(
 					+ "】及其所有的版本吗？")) {
 				$.ajax({
 					type : "GET",
-					url : "delapp.json",
+					url : "../appinfo/deleteById",
 					data : {
 						id : obj.attr("appinfoid")
 					},

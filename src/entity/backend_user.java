@@ -15,6 +15,8 @@ public class backend_user {
 	private Date modifyDate; // 最新得更新时间
 	private String userPassword; // 用户密码
 
+	private String userTypeName;
+
 	public int getId() {
 		return id;
 	}
@@ -77,6 +79,14 @@ public class backend_user {
 
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
+	}
+
+	public String getUserTypeName() {
+		return userTypeName;
+	}
+
+	public void setUserTypeName(String userTypeName) {
+		this.userTypeName = userTypeName;
 	}
 
 	public String getUserPassword() {

@@ -17,4 +17,6 @@ public interface version_dao {
 	public int updateversion(app_version version);
 
 	public app_version selecrById(@Param("id") String id);
+
+	public int deleteById(@Param("appId") String appid);
 }

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+2<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +41,7 @@
 		<div class="login_wrapper">
 			<div class="animate form login_form">
 				<section class="login_content">
-					<form action="dologin" method="post">
+					<form action="${pageContext.request.contextPath }/backenduser/selectuser.html" method="post">
 						<h1>后台管理系统</h1>
 						<div>
 							<input type="text" class="form-control" name="userCode"

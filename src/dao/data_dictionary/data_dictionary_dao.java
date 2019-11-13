@@ -9,4 +9,6 @@ public interface data_dictionary_dao {
 	public List<data_dictionary> selectCpType();
 
 	public List<data_dictionary> selectApptype();
+	
+	
 }

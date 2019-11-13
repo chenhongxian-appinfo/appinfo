@@ -64,4 +64,19 @@ public class appinfo_service_impl implements appinfo_service {
 		return yes;
 	}
 
+	@Override
+	public app_info selectByIdContext(String id) {
+		app_info app = dao.selectByidContext(id);
+		return app;
+	}
+
+	@Override
+	public boolean deleteById(String id) {
+		boolean yes = false;
+		if (dao.deleteById(id) >= 1) {
+			yes = true;
+		}
+		return yes;
+	}
+
 }

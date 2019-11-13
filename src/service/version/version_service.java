@@ -16,4 +16,6 @@ public interface version_service {
 	public boolean updateversion(app_version version);
 
 	public app_version selectById(String id);
+
+	public boolean deleteById(String appId);
 }
