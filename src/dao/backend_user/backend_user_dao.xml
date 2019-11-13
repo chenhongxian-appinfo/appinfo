@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.backend_user.backend_user_dao">
+
+
+	<resultMap type="backend_user" id="userMap">
+		<id property="id" column="id" />
+		<result property="userTypeName" column="typeName" />
+	</resultMap>
+
+	<select id="selectuser" resultMap="userMap">
+
+		select user.*,d.valueName as
+		typeName
+		from backend_user as user,data_dictionary as d where userCode
+		=
+		#{UserCoke}
+		and user.userType = d.valueId and d.typeCode='USER_TYPE';
+
+
+	</select>
+
+</mapper>
